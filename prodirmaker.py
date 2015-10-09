@@ -4,15 +4,18 @@ import argparse
  
 def createParser ():
     parser = argparse.ArgumentParser()
-    parser.add_argument ('-p', '--project_dir', default='мир')
+    parser.add_argument ('-p', '--project_dir', default='base')
  
     return parser 
  
 if __name__ == '__main__':
     parser = createParser()
-    namespace = parser.parse_args(sys.argv[1:])
+    proname = parser.parse_args(sys.argv[1:])
 
+    print(proname.project_dir)
+    baseDir = str(proname.project_dir)
+    dirBin = baseDir + "/bin";
     try:
-        os.makedirs(namespace.project_dir)
+        os.makedirs(dirBin)
     except OSError:
         pass
