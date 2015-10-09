@@ -2,9 +2,10 @@ import os
 import sys
 import argparse
  
-def createParser ():
+def createParser():
     parser = argparse.ArgumentParser()
-    parser.add_argument ('-p', '--project_dir', default='base')
+    parser.add_argument('-r', '--root_dir_name', default = 'MyProject')
+    parser.add_argument('-b', '--base_project_name', default = 'MyProject')
  
     return parser 
 
@@ -24,10 +25,10 @@ def makeCatalogueStructure (rootDir):
     
 if __name__ == '__main__':
     parser = createParser()
-    proname = parser.parse_args(sys.argv[1:])
+    projectStructure = parser.parse_args(sys.argv[1:])
 
-    print(proname.project_dir)
-    baseDir = str(proname.project_dir)
+    print(projectStructure.root_dir_name)
+    baseDir = str(projectStructure.root_dir_name)
     dirList = makeCatalogueStructure(baseDir)
     
     try:
