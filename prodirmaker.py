@@ -1,6 +1,7 @@
 import os
 import sys
 import argparse
+import urllib.request
  
 def createParser():
     parser = argparse.ArgumentParser()
@@ -41,6 +42,10 @@ if __name__ == '__main__':
     projectNamePath = baseDir + "/" + projectName + ".pro"
     try:
         with open(projectNamePath, "w") as outfile:
-            outfile.write('Hello World')
+            outfile.write('TEMPLATE = subdirs')
     except IOError:
         print("Can't create file")
+
+    # Download the file from `url` and save it locally under `file_name`:
+    url = "https://dl.dropboxusercontent.com/s/w1g602bxi29cmnl/common.pri?dl=0"
+    urllib.request.urlretrieve(url, "common.pri")
