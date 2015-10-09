@@ -36,3 +36,11 @@ if __name__ == '__main__':
             os.makedirs(catalog)
     except OSError:
         pass
+
+    projectName = str(projectStructure.base_project_name)
+    projectNamePath = baseDir + "/" + projectName + ".pro"
+    try:
+        with open(projectNamePath, "w") as outfile:
+            outfile.write('Hello World')
+    except IOError:
+        print("Can't create file")
